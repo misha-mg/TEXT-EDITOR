@@ -1,0 +1,17 @@
+.json-structure {
+  border-radius: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  background-color: #fff;
+  padding: 1rem;
+  width: 50%;
+
+  .json-structure__content {
+    background: #fafdff;
+    border-radius: 0.5rem;
+    border: solid 2px #cacaca;
+    padding: 0.5rem;
+  }
+  .json-structure__button {
+    margin-bottom: 1rem;
+  }
+}

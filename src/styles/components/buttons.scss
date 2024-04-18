@@ -1,0 +1,19 @@
+.custom-button {
+  border: none;
+  border-radius: 10px;
+  color: white;
+  transition: 0.2s linear;
+  background: #0f97d6;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-family: "Jersey 20", sans-serif;
+  font-size: 1.2rem;
+
+  &:hover {
+    box-shadow: 0 0 0 2px white, 0 0 0 4px #0f97d6;
+  }
+  &:active {
+    box-shadow: 0 0 0 0;
+  }
+}
