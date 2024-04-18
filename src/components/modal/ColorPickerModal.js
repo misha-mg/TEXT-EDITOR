@@ -1,6 +1,6 @@
 import { HexColorPicker } from "react-colorful";
 
-const ColorPickerModal = ({ isOpen, color, onChange, action, setIsOpen }) => {
+function ColorPickerModal({ isOpen, color, onChange, action, setIsOpen }) {
   const close = (e) => {
     if (e.target.classList.contains("color-modal")) {
       setIsOpen(false);
@@ -17,6 +17,6 @@ const ColorPickerModal = ({ isOpen, color, onChange, action, setIsOpen }) => {
       </div>
     </div>
   );
-};
+}
 
 export default ColorPickerModal;

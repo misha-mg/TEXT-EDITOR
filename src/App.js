@@ -6,39 +6,38 @@ import ToolButton from "./components/buttons/ToolButton";
 import ColorPickerButton from "./components/buttons/ColorPickerButton";
 import FontSizeSelect from "./components/select/FontSizeSelect";
 import StructureSection from "./components/sections/StructureSection";
-import { blockCleaningOfEmpty, styleElement } from "./app/utils";
+import { removingEmptyTegs, styleElement } from "./app/utils";
 
 function App() {
+  const DEFAULT_TEXT_COLOR = "rgb(107, 206, 197)";
+  const DEFAULT_TEXT_BG = "rgb(173, 72, 172)";
+
   const editorRef = useRef(null);
   const [editorContent, setEditorContent] = useState("");
   const [selectedFontValue, setSelectedFontValue] = useState("");
-  const [textColor, setTextColor] = useState("rgb(107, 206, 197)");
-  const [textBGColor, setTextBGColor] = useState("rgb(173, 72, 172)");
+  const [textColor, setTextColor] = useState(DEFAULT_TEXT_COLOR);
+  const [textBGColor, setTextBGColor] = useState(DEFAULT_TEXT_BG);
   const [colorModalOpen, setColorModalOpen] = useState(false);
   const [colorModalType, setColorModalType] = useState("text");
   const [currenrModalColor, setCurrenrModalColor] = useState("");
 
   // COLOR BLOCK
 
-  function colorModalAction(type) {
+  const colorModalAction = (type) => {
     setColorModalType(type);
     setColorModalOpen(!colorModalOpen);
-  }
+  };
 
-  function setCurrentColor() {
+  const setCurrentColor = () => {
     colorModalAction();
     if (colorModalType === "text") {
       setTextColor(currenrModalColor);
     } else if (colorModalType === "background") {
       setTextBGColor(currenrModalColor);
     }
-  }
+  };
 
   // REF CONTROL
-
-  function editorControl() {
-    setEditorContent((state) => editorRef.current.innerHTML);
-  }
 
   const wasActive = useRef(false);
   useEffect(() => {
@@ -69,7 +68,7 @@ function App() {
     styleValues.push(selectedFontValue);
   }, [textColor, textBGColor, selectedFontValue, styleValues]);
 
-  function textProcessing(action) {
+  const textProcessing = (action) => {
     let selection = window.getSelection();
     let range = selection.getRangeAt(0);
     let selectedHtml = range.cloneContents();
@@ -139,8 +138,8 @@ function App() {
 
       range.insertNode(selectedHtml);
     }
-    blockCleaningOfEmpty(editorRef);
-  }
+    removingEmptyTegs(editorRef);
+  };
 
   return (
     <div>
@@ -205,7 +204,9 @@ function App() {
               className="editor-field"
               ref={editorRef}
               contentEditable={true}
-              onInput={editorControl}
+              onInput={() =>
+                setEditorContent((state) => editorRef.current.innerHTML)
+              }
             ></div>
           </div>
 

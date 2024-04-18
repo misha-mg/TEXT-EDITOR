@@ -28,7 +28,7 @@ function StructureSection({ currentRef }) {
   };
 
   let editorContent = [];
-  function processNode(node) {
+  const processNode = (node) => {
     if (
       node.nodeType === Node.ELEMENT_NODE &&
       node.textContent.trim().length > 0
@@ -62,7 +62,7 @@ function StructureSection({ currentRef }) {
       };
       editorContent.push(nodeInfo);
     }
-  }
+  };
 
   const creactJSONData = () => {
     currentRef.current.childNodes.forEach(processNode);
