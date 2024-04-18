@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.scss";
 import "../src/styles/app.scss";
-import Modal from "./components/modal/ColorModal";
+import ColorPickerModal from "./components/modal/ColorPickerModal";
 import ToolButton from "./components/buttons/ToolButton";
-import ColorButton from "./components/buttons/ColorButton";
-import SelectBlock from "./components/buttons/SelectBlock";
+import ColorPickerButton from "./components/buttons/ColorPickerButton";
+import FontSizeSelect from "./components/select/FontSizeSelect";
 import InfoJSON from "./components/sections/InfoJSON";
 import { blockCleaningOfEmpty, styleElement } from "./app/utils";
 
@@ -161,7 +161,7 @@ function App() {
                   actionType="fontSize"
                   handleAction={textProcessing}
                 />
-                <SelectBlock
+                <FontSizeSelect
                   setValue={setSelectedFontValue}
                   value={selectedFontValue}
                 />
@@ -182,7 +182,7 @@ function App() {
                   actionType="textColor"
                   handleAction={textProcessing}
                 />
-                <ColorButton
+                <ColorPickerButton
                   handleAction={colorModalAction}
                   actionType="text"
                   activeColor={textColor}
@@ -194,7 +194,7 @@ function App() {
                   actionType="backgroundColor"
                   handleAction={textProcessing}
                 />
-                <ColorButton
+                <ColorPickerButton
                   handleAction={colorModalAction}
                   actionType="background"
                   activeColor={textBGColor}
@@ -212,7 +212,7 @@ function App() {
           <InfoJSON currentRef={editorRef} />
         </div>
 
-        <Modal
+        <ColorPickerModal
           isOpen={colorModalOpen}
           setIsOpen={setColorModalOpen}
           action={setCurrentColor}

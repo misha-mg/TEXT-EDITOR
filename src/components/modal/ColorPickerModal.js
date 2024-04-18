@@ -1,6 +1,6 @@
 import { HexColorPicker } from "react-colorful";
 
-const Modal = ({ isOpen, color, onChange, action, setIsOpen }) => {
+const ColorPickerModal = ({ isOpen, color, onChange, action, setIsOpen }) => {
   function closeModal(e) {
     if (e.target.classList.contains("color-modal")) {
       setIsOpen(false);
@@ -22,4 +22,4 @@ const Modal = ({ isOpen, color, onChange, action, setIsOpen }) => {
   );
 };
 
-export default Modal;
+export default ColorPickerModal;

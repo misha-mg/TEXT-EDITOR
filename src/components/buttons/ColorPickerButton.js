@@ -1,4 +1,4 @@
-function ColorButton({ handleAction, actionType, activeColor }) {
+function ColorPickerButton({ handleAction, actionType, activeColor }) {
   return (
     <>
       <button
@@ -10,4 +10,4 @@ function ColorButton({ handleAction, actionType, activeColor }) {
   );
 }
 
-export default ColorButton;
+export default ColorPickerButton;
