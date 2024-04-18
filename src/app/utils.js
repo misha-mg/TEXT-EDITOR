@@ -56,3 +56,19 @@ export function styleElement(node, action, styleValues) {
   }
   return currentTag;
 }
+
+export function blockCleaningOfEmpty(ref) {
+  let editorContent = ref.current.innerHTML;
+  let tempElement = document.createElement("div");
+  tempElement.innerHTML = editorContent;
+
+  for (let i = tempElement.childNodes.length - 1; i >= 0; i--) {
+    let child = tempElement.childNodes[i];
+    if (child.nodeType === 1) {
+      if (!child.innerHTML.trim()) {
+        tempElement.removeChild(child);
+      }
+    }
+  }
+  ref.current.innerHTML = tempElement.innerHTML;
+}

@@ -6,7 +6,7 @@ import ToolButton from "./components/buttons/ToolButton";
 import ColorButton from "./components/buttons/ColorButton";
 import SelectBlock from "./components/buttons/SelectBlock";
 import InfoJSON from "./components/sections/InfoJSON";
-import { styleElement } from "./app/utils";
+import { blockCleaningOfEmpty, styleElement } from "./app/utils";
 
 function App() {
   const editorRef = useRef(null);
@@ -57,35 +57,6 @@ function App() {
   }, [editorContent]);
 
   // GET/STYLE TEXT
-
-  function removeEm() {
-    let editorContent = editorRef.current.innerHTML;
-
-    // Создаем временный элемент для анализа содержимого
-    let tempElement = document.createElement("div");
-    tempElement.innerHTML = editorContent;
-
-    // Функция для удаления пустых элементов
-    function removeEmptyElements(node) {
-      for (let i = node.childNodes.length - 1; i >= 0; i--) {
-        let child = node.childNodes[i];
-        if (child.nodeType === 1) {
-          // Это элемент
-          if (!child.innerHTML.trim()) {
-            // Если содержимое пустое
-            node.removeChild(child); // Удаляем этот элемент
-          } else {
-            removeEmptyElements(child); // Рекурсивно проверяем вложенные элементы
-          }
-        }
-      }
-    }
-
-    removeEmptyElements(tempElement);
-
-    // Обновляем содержимое редактора
-    editorRef.current.innerHTML = tempElement.innerHTML;
-  }
 
   const styleValues = useMemo(
     () => [textColor, textBGColor, selectedFontValue],
@@ -168,7 +139,7 @@ function App() {
 
       range.insertNode(selectedHtml);
     }
-    removeEm();
+    blockCleaningOfEmpty(editorRef);
   }
 
   return (
