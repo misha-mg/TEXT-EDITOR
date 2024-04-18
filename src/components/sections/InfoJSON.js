@@ -47,7 +47,6 @@ function StructureJSON({ currentRef }) {
         });
       }
       const nodeInfo = {
-        type: "element",
         content: node.textContent,
       };
       if (styles && Object.keys(styles).length > 0) {
@@ -59,7 +58,6 @@ function StructureJSON({ currentRef }) {
       node.textContent.trim().length > 0
     ) {
       const nodeInfo = {
-        type: "text",
         content: node.textContent.trim(),
       };
       editorContent.push(nodeInfo);
