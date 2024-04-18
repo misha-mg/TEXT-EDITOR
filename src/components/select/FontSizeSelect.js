@@ -8,7 +8,7 @@ function FontSizeSelect({ setValue, value }) {
   const FONT_STEP = 2;
 
   const options = [];
-  function setFontsizeOptions() {
+  const setFontsizeOptions = () => {
     for (let i = MIN_FONT; i <= MAX_FONT; i += FONT_STEP) {
       options.push(
         <option key={i} value={i}>
@@ -16,7 +16,7 @@ function FontSizeSelect({ setValue, value }) {
         </option>
       );
     }
-  }
+  };
   setFontsizeOptions();
 
   return (

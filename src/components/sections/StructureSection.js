@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { compareObjects } from "../../app/utils";
 
-function StructureJSON({ currentRef }) {
+function StructureSection({ currentRef }) {
   const [jsonData, setJsonData] = useState("");
 
-  function mergeAdjacentElements(contentArray) {
+  const mergeAdjacentElements = (contentArray) => {
     const mergedContent = [];
     for (let i = 0; i < contentArray.length; i++) {
       const current = contentArray[i];
@@ -11,12 +12,11 @@ function StructureJSON({ currentRef }) {
       if (
         next &&
         current.type === next.type &&
-        JSON.stringify(current.styles) === JSON.stringify(next.styles)
+        compareObjects(current.styles, next.styles)
       ) {
         const mergedElement = {
-          type: current.type,
+          ...current,
           content: current.content + next.content,
-          styles: current.styles,
         };
         mergedContent.push(mergedElement);
         i++;
@@ -25,7 +25,7 @@ function StructureJSON({ currentRef }) {
       }
     }
     return mergedContent;
-  }
+  };
 
   let editorContent = [];
   function processNode(node) {
@@ -64,11 +64,11 @@ function StructureJSON({ currentRef }) {
     }
   }
 
-  function creactJSONData() {
+  const creactJSONData = () => {
     currentRef.current.childNodes.forEach(processNode);
     let result = mergeAdjacentElements(editorContent);
     setJsonData(JSON.stringify(result, null, 2));
-  }
+  };
 
   return (
     <>
@@ -91,4 +91,4 @@ function StructureJSON({ currentRef }) {
   );
 }
 
-export default StructureJSON;
+export default StructureSection;

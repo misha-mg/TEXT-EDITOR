@@ -5,7 +5,7 @@ import ColorPickerModal from "./components/modal/ColorPickerModal";
 import ToolButton from "./components/buttons/ToolButton";
 import ColorPickerButton from "./components/buttons/ColorPickerButton";
 import FontSizeSelect from "./components/select/FontSizeSelect";
-import InfoJSON from "./components/sections/InfoJSON";
+import StructureSection from "./components/sections/StructureSection";
 import { blockCleaningOfEmpty, styleElement } from "./app/utils";
 
 function App() {
@@ -209,7 +209,7 @@ function App() {
             ></div>
           </div>
 
-          <InfoJSON currentRef={editorRef} />
+          <StructureSection currentRef={editorRef} />
         </div>
 
         <ColorPickerModal
