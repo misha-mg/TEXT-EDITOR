@@ -65,8 +65,11 @@ function StructureSection({ currentRef }) {
   };
 
   const creactJSONData = () => {
+    editorContent.splice(0);
     currentRef.current.childNodes.forEach(processNode);
-    let result = mergeAdjacentElements(editorContent);
+    // let result = mergeAdjacentElements(editorContent);
+    let result = editorContent;
+
     setJsonData(JSON.stringify(result, null, 2));
   };
 
