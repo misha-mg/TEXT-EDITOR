@@ -54,6 +54,13 @@
     border: solid 2px #cacaca;
     outline: none;
   }
+
+
+  @media screen and (max-width: 520px) {
+    .editor-tools {
+        flex-wrap: wrap;
+    }
+  }
 }
 
 

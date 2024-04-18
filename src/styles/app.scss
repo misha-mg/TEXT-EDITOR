@@ -32,10 +32,17 @@ h2 {
   padding: 0 2rem;
 }
 
+@media screen and (max-width: 520px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+}
 
+@import "./components/buttons.scss";
+@import "./components/modal.scss";
 
-@import './components/buttons.scss';
-@import './components/modal.scss';
-
-@import './sections/editor.scss';
-@import './sections/info-json.scss';
+@import "./sections/editor.scss";
+@import "./sections/info-json.scss";
