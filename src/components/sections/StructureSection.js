@@ -5,7 +5,9 @@ function StructureSection({ currentRef }) {
   const [jsonData, setJsonData] = useState("");
 
   const mergeAdjacentElements = (contentArray) => {
+    console.log(contentArray);
     const mergedContent = [];
+    let hasPairs = false;
     for (let i = 0; i < contentArray.length; i++) {
       const current = contentArray[i];
       const next = contentArray[i + 1];
@@ -18,13 +20,20 @@ function StructureSection({ currentRef }) {
           ...current,
           content: current.content + next.content,
         };
+
         mergedContent.push(mergedElement);
+        hasPairs = true;
         i++;
       } else {
         mergedContent.push(current);
       }
     }
-    return mergedContent;
+
+    if (hasPairs) {
+      return mergeAdjacentElements(mergedContent);
+    } else {
+      return mergedContent;
+    }
   };
 
   let editorContent = [];
@@ -68,6 +77,8 @@ function StructureSection({ currentRef }) {
     editorContent.splice(0);
     currentRef.current.childNodes.forEach(processNode);
     let result = mergeAdjacentElements(editorContent);
+
+    console.log(result);
 
     setJsonData(JSON.stringify(result, null, 2));
   };
