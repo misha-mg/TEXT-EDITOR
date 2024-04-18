@@ -5,7 +5,6 @@ function StructureSection({ currentRef }) {
   const [jsonData, setJsonData] = useState("");
 
   const mergeAdjacentElements = (contentArray) => {
-    console.log(contentArray);
     const mergedContent = [];
     let hasPairs = false;
     for (let i = 0; i < contentArray.length; i++) {
@@ -77,9 +76,6 @@ function StructureSection({ currentRef }) {
     editorContent.splice(0);
     currentRef.current.childNodes.forEach(processNode);
     let result = mergeAdjacentElements(editorContent);
-
-    console.log(result);
-
     setJsonData(JSON.stringify(result, null, 2));
   };
 
