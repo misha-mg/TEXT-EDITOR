@@ -58,6 +58,35 @@ function App() {
 
   // GET/STYLE TEXT
 
+  function removeEm() {
+    let editorContent = editorRef.current.innerHTML;
+
+    // Создаем временный элемент для анализа содержимого
+    let tempElement = document.createElement("div");
+    tempElement.innerHTML = editorContent;
+
+    // Функция для удаления пустых элементов
+    function removeEmptyElements(node) {
+      for (let i = node.childNodes.length - 1; i >= 0; i--) {
+        let child = node.childNodes[i];
+        if (child.nodeType === 1) {
+          // Это элемент
+          if (!child.innerHTML.trim()) {
+            // Если содержимое пустое
+            node.removeChild(child); // Удаляем этот элемент
+          } else {
+            removeEmptyElements(child); // Рекурсивно проверяем вложенные элементы
+          }
+        }
+      }
+    }
+
+    removeEmptyElements(tempElement);
+
+    // Обновляем содержимое редактора
+    editorRef.current.innerHTML = tempElement.innerHTML;
+  }
+
   const styleValues = useMemo(
     () => [textColor, textBGColor, selectedFontValue],
     [textColor, textBGColor, selectedFontValue]
@@ -136,15 +165,19 @@ function App() {
       return;
     } else {
       range.deleteContents();
+
       range.insertNode(selectedHtml);
     }
+    removeEm();
   }
 
   return (
     <div>
       <header>
         <div className="container">
-          <h1>TEXT EDITOR</h1>
+          <h1>
+            TEXT EDITOR<br></br> FOR "Redentu"
+          </h1>
         </div>
       </header>
 
@@ -202,10 +235,6 @@ function App() {
               ref={editorRef}
               contentEditable={true}
               onInput={editorControl}
-              style={{
-                minHeight: "200px",
-                padding: "1rem",
-              }}
             ></div>
           </div>
 

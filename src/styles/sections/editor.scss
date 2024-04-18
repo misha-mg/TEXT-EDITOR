@@ -24,11 +24,14 @@
       cursor: pointer;
       border: solid 2px #3d3d3d;
       transition: 0.1s;
-      &:hover {
-        transform: scale(1.05);
-      }
-      &:active {
-        transform: scale(1);
+
+      @media screen and (min-width: 520px) {
+        &:hover {
+          transform: scale(1.05);
+        }
+        &:active {
+          transform: scale(1);
+        }
       }
 
       img {
@@ -38,31 +41,29 @@
       }
     }
     .font-select {
-        width: 2.7rem;
-        height: 2rem;
-        background: transparent;
-        border-radius: 0.3rem;
-        cursor: pointer;
-        border: solid 2px #202020;
-        outline: none;
+      width: 2.7rem;
+      height: 2rem;
+      background: transparent;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      border: solid 2px #202020;
+      outline: none;
     }
   }
 
   .editor-field {
+    min-height: 15rem;
+    padding: 1rem;
     background: #fafdff;
     border-radius: 0.5rem;
     border: solid 2px #cacaca;
     outline: none;
+    
   }
-
 
   @media screen and (max-width: 520px) {
     .editor-tools {
-        flex-wrap: wrap;
+      flex-wrap: wrap;
     }
   }
 }
-
-
-
-

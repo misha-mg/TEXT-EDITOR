@@ -1,8 +1,5 @@
 export function styleElement(node, action, styleValues) {
   const [textColor, textBGColor, selectedFontValue] = styleValues;
-
-  console.log(textColor);
-
   let currentTag;
   if (node.nodeType === Node.ELEMENT_NODE) {
     currentTag = node;

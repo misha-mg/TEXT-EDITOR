@@ -10,10 +10,12 @@
   font-family: "Jersey 20", sans-serif;
   font-size: 1.2rem;
 
-  &:hover {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px #0f97d6;
-  }
-  &:active {
-    box-shadow: 0 0 0 0;
+  @media screen and (min-width: 520px) {
+    &:hover {
+      box-shadow: 0 0 0 2px white, 0 0 0 4px #0f97d6;
+    }
+    &:active {
+      box-shadow: 0 0 0 0;
+    }
   }
 }
