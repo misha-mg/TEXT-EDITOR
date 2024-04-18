@@ -207,6 +207,11 @@ function App() {
               onInput={() =>
                 setEditorContent((state) => editorRef.current.innerHTML)
               }
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                }
+              }}
             ></div>
           </div>
 
